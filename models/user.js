@@ -11,9 +11,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Order.hasMany(models.Vehicle, {
+      User.hasOne(models.Vehicle, {
         foreignKey: 'user_id',
-        as: 'vehicles',
+        as: 'vehicle', //alias for association
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+      });
+
+      User.hasOne(models.Food, {
+        foreignKey: 'user_id',
+        as: 'food',
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       });
