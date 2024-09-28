@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Vehicle extends Model {
+  class MasterAppliance extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,44 +11,35 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Vehicle.belongsTo(models.User, {
-        foreignKey: 'user_id',
+      MasterAppliance.hasMany(models.Transaction, {
+        foreignKey: 'food_type',
+        as: 'selectedfood',
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
-      });
+      });  
     }
   }
-  Vehicle.init({
-    user_id:  {
-      type: Sequelize.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'users', 
-        key: 'id'
-      },
-    },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    count: {
+  MasterAppliance.init({
+    id:  {
       type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
       allowNull: false,
     },
-    fuel_type:{
-      type: DataTypes.STRING,
+    name:{
+      type: DataTypes.STRING(255),
       allowNull: false,
     },
-    kilometres:{
-      type: DataTypes.INTEGER,
+    value:  {
+      type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
     },
   }, {
     sequelize,
-    modelName: 'Vehicle',
-    tableName: 'vehicles',
-    underscored: true,
-    timestamps: false
+    modelName: 'MasterAppliance',
+    tableName: 'master_appliances',
+    underscored: true, 
+    timestamps: false,
   });
-  return Vehicle;
+  return MasterAppliance;
 };

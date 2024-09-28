@@ -2,42 +2,49 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('vehicles', {
+    await queryInterface.createTable('form', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      user_id: {
+      transaction_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'users',
-          key: 'id',
+          model: 'transactions', 
+          key: 'id'
         },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
       },
-      name: {
+      name:{
         type: Sequelize.STRING(255),
         allowNull: false,
       },
-      count: {
+      number_of_trees: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      fuel_type: {
-        type: Sequelize.STRING,
+      name_to_be_planted: {
+        type: Sequelize.STRING(255),
         allowNull: false,
       },
-      kilometres: {
-        type: Sequelize.INTEGER,
+      phone: {
+        type: Sequelize.STRING(15),
         allowNull: false,
       },
+      email: {
+        type: Sequelize.STRING(255),
+        allowNull: false,
+      },
+      location: {
+        type: Sequelize.STRING(255),
+        allowNull: false,
+      },
+     
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('vehicles');
+    await queryInterface.dropTable('form');
   }
 };

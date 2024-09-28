@@ -2,30 +2,28 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('foods', {
+    await queryInterface.createTable('master_foods', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      user_id:  {
-        type: Sequelize.INTEGER,
+      name: {
+        type: Sequelize.STRING(255),
         allowNull: false,
-        references: {
-          model: 'users', 
-          key: 'id'
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE'
       },
-      food_type: {
-        type: Sequelize.STRING,
-        allowNull: false
+      path:{
+        type: Sequelize.STRING(255),
+        allowNull: false,
+      },
+      value:{
+        type: Sequelize.DECIMAL(10, 2),
+        allowNull: false,
       },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('foods');
+    await queryInterface.dropTable('master_foods');
   }
 };
