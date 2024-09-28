@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
       });  
     }
   }
-  master_fuel.init({
+  MasterFuel.init({
     id:  {
       type: DataTypes.INTEGER,
       autoIncrement: true,

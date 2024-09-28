@@ -20,21 +20,21 @@ module.exports = (sequelize, DataTypes) => {
 
       Transaction.belongsTo(models.MasterVehicle, {
         foreignKey: 'vehicle_id', 
-        as: 'user',            
+        as: 'mastervehicle',            
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       });
 
       Transaction.belongsTo(models.MasterFuel, {
         foreignKey: 'fuel_type', 
-        as: 'user',            
+        as: 'masterfuel',            
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       });
 
       Transaction.belongsTo(models.MasterFood, {
         foreignKey: 'food_type', 
-        as: 'user',            
+        as: 'masterfood',            
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       });
