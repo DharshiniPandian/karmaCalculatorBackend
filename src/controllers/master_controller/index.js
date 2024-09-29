@@ -6,7 +6,7 @@ const get_master_foods = async (req, res) => {
         res.status(200).json(masterfoods);
     } catch (error) {
         console.error("Error fetching product masterfoods:", error);
-        res.status(500).send("Internal Server Error");
+        res.status(500).json({ message: "Internal Server Error", error: error.message });
     }
 };
 
@@ -16,7 +16,7 @@ const get_master_fuels = async (req, res) => {
         res.status(200).json(masterfuels);
     } catch (error) {
         console.error("Error fetching product masterfuels:", error);
-        res.status(500).send("Internal Server Error");
+         res.status(500).json({ message: "Internal Server Error", error: error.message });
     }
 };
 
@@ -26,7 +26,7 @@ const get_master_appliances = async (req, res) => {
         res.status(200).json(masterappliances);
     } catch (error) {
         console.error("Error fetching product masterappliances:", error);
-        res.status(500).send("Internal Server Error");
+         res.status(500).json({ message: "Internal Server Error", error: error.message });
     }
 };
 
@@ -36,7 +36,7 @@ const get_master_vehicles = async (req, res) => {
         res.status(200).json(mastervehicles);
     } catch (error) {
         console.error("Error fetching product mastervehicles:", error);
-        res.status(500).send("Internal Server Error");
+         res.status(500).json({ message: "Internal Server Error", error: error.message });
     }
 };
 
