@@ -103,6 +103,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
     },
+    plant_trees: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0, 
+      allowNull: false
+  },
   }, {
     sequelize,
     modelName: 'Transaction',
