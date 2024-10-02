@@ -1,19 +1,22 @@
-const express = require('express')
-const dotenv = require('dotenv')
-const sequelize = require('./config/db')
-const cors = require('cors')
-const masterRoutes = require('./src/routes/masterRoutes')
-const transactionRoutes = require('./src/routes/transactionRoutes')
-const swaggerJSDoc = require('swagger-jsdoc')
-const swaggerUi = require('swagger-ui-express')
-
+const express = require('express');
+const dotenv = require('dotenv');
+const sequelize = require('./config/db');
+const cors = require('cors');
+const masterRoutes = require('./src/routes/masterRoutes');
+const transaction = require('./src/routes/transactionRoutes')
+// Load environment variables from .env file
 dotenv.config();
 
-const app = express()
+// Create an Express application
+const app = express();
 
-const PORT = process.env.PORT || 8081
+// Set the port to listen on, defaulting to 8081 if not specified in environment variables
+const PORT = process.env.PORT || 8081;
 
+// Middleware to parse JSON requests
 app.use(express.json());
+
+// CORS configuration
 app.use(cors({
     origin: ["http://localhost:5173"],
     allowedHeaders: ['Content-Type'],
@@ -21,46 +24,17 @@ app.use(cors({
     credentials: true
 }));
 
-const options = {
-    definition : {
-        openapi : '3.0.0',
-        info : {
-            title: 'Karma Calculator',
-            version: '1.0.0',
-            description: 'API documentation using Swagger'
-        },
-        servers:[
-            {
-               url : 'http://localhost:8081/'
-            }
-        ] 
-    },
-    // apis: ['./src/routes/masterRoutes']
-    apis: ['./src/routes/*.js']
-}
+// Define routes
+app.use('/master', masterRoutes);
 
-const swaggerSpec = swaggerJSDoc(options)
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
-app.use('/master',masterRoutes)
-
-app.use('/transaction', transactionRoutes)
-
-/**
- * @swagger
- * /:
- *  get:
- *      summary: This api is used to check if get method is working or not
- *      description: This api is used to check if get method is working or not
- *      responses:
- *          200:
- *              description: to test get method
- */
-
-app.get('/', (req,res) => {
-    res.send('request received');
+app.use('/transaction', transaction)
+// Basic health check route
+app.get('/', (req, res) => {
+    res.send('Request received');
 });
 
+// Synchronize the database and start the server
 sequelize.sync()
     .then(() => {
         console.log('Database synchronized');
@@ -71,7 +45,3 @@ sequelize.sync()
     .catch(err => {
         console.error('Error synchronizing database:', err);
     });
-
-
-
-
