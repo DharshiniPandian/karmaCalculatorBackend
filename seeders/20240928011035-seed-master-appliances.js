@@ -6,31 +6,31 @@ module.exports = {
     return queryInterface.bulkInsert('master_appliances', [
       {
         name: 'Fridge',
-        value: 500.00,               
+        value: 0.55,               
       },
       {
         name: 'AC',
-        value: 1000.00,              
+        value: 0.50,              
       },
       {
         name: 'Chimney',
-        value: 300.00,                
+        value: 0.05,                
       },
       {
         name: 'Washing Machine',
-        value: 700.00,               
+        value: 0.07,               
       },
       {
         name: 'Electric Vehicles',
-        value: 1500.00,               
+        value: 0.12,               
       },
       {
         name: 'Air Cooler',
-        value: 250.00,               
+        value: 0.02,               
       },
       {
         name: 'Mixer/Grinder',
-        value: 100.00,                
+        value: 0.01,                
       }
     ]);
   },
