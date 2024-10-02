@@ -10,14 +10,14 @@ module.exports = {
         value: 1.5,           
       },
       {
-        name: 'Non-Veg',
-        path: '/images/non-veg.png',
-        value: 3.3,              
-      },
-      {
         name: 'Both',
         path: '/images/both.png',  
         value: 2.3,            
+      },
+      {
+        name: 'Non-Veg',
+        path: '/images/non-veg.png',
+        value: 3.3,              
       }
     ]);
   },
