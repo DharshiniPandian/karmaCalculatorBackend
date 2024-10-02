@@ -29,7 +29,7 @@ module.exports = {
         value: 0.02,               
       },
       {
-        name: 'Mixer/Grinder',
+        name: 'Mixer/ Grinder',
         value: 0.01,                
       }
     ]);
