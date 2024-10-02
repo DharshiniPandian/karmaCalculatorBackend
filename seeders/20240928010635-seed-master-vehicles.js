@@ -7,7 +7,7 @@ module.exports = {
       {
         name: 'Bicycle/Walk',
         path: '/images/bicycle.png', 
-        value: 0.00,                
+        value: 0,                
       },
       {
         name: 'Two Wheeler',
@@ -17,7 +17,7 @@ module.exports = {
       {
         name: 'Car',
         path: '/images/car.png',   
-        value: 0.20,             
+        value: 0.22,             
       }
     ]);
   },

@@ -7,12 +7,12 @@ module.exports = {
       {
         name: 'Petrol/Diesel',
         path: '/images/petrolDiesel.png',  
-        value: 0.5,  
+        value: 0.50,  
       },
       {
         name: 'Electric Vehicle',
         path: '/images/electric.svg',
-        value: 0.1,  
+        value: 0.30,  
       }
     ]);
   },

@@ -7,17 +7,17 @@ module.exports = {
       {
         name: 'Veg',
         path: '/images/veg.png',
-        value: 100.00,           
+        value: 1.5,           
       },
       {
         name: 'Non-Veg',
         path: '/images/non-veg.png',
-        value: 150.00,              
+        value: 3.3,              
       },
       {
         name: 'Both',
         path: '/images/both.png',  
-        value: 200.00,            
+        value: 2.3,            
       }
     ]);
   },
