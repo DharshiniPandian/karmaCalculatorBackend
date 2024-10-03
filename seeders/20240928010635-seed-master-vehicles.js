@@ -5,7 +5,7 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     return queryInterface.bulkInsert('master_vehicles', [
       {
-        name: 'Bicycle/Walk',
+        name: 'Bicycle/ Walk',
         path: '/images/bicycle.png', 
         value: 0,                
       },
