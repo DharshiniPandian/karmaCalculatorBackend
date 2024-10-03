@@ -8,7 +8,7 @@ const store_data = async (req,res) => {
         const newUser = await User.create({}, { transaction: t });
 
         const newTransaction = await Transaction.create({
-            user_id: newUser.id,
+            user_id: newUser.id     ,
             vehicle_id: vehicle.vehicle_id,
             vehicle_count: vehicle.vehicle_count,
             fuel_type: vehicle.fuel_type,
