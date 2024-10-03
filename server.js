@@ -4,6 +4,8 @@ const sequelize = require('./config/db');
 const cors = require('cors');
 const masterRoutes = require('./src/routes/masterRoutes');
 const transaction = require('./src/routes/transactionRoutes')
+const swaggerJSDoc = require('swagger-jsdoc')
+const swaggerUi = require('swagger-ui-express')
 // Load environment variables from .env file
 dotenv.config();
 
@@ -23,6 +25,27 @@ app.use(cors({
     methods: ["POST", "GET", "PUT", "OPTIONS"],
     credentials: true
 }));
+
+const options = {
+    definition : {
+        openapi : '3.0.0',
+        info : {
+            title: 'Karma Calculator',
+            version: '1.0.0',
+            description: 'API documentation using Swagger'
+        },
+        servers:[
+            {
+               url : 'http://localhost:8081/'
+            }
+        ] 
+    },
+    // apis: ['./src/routes/masterRoutes']
+    apis: ['./src/routes/*.js']
+}
+
+const swaggerSpec = swaggerJSDoc(options)
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
 // Define routes
 app.use('/master', masterRoutes);
